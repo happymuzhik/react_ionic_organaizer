@@ -1,0 +1,1 @@
+npm install --save-dev react react-dom react-router react-redux redux redux-logger webpack autoprefixer-loader babel-core babel-loader babel-polyfill babel-preset-es2015 babel-preset-react babel-preset-stage-0 compression-webpack-plugin css-loader extract-text-webpack-plugin file-loader html-webpack-plugin raw-loader style-loader stylus stylus-loader webpack-cleanup-plugin
