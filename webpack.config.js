@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 const path = require('path');
 
 const prod_dir = '/dist/web/';
@@ -16,6 +17,15 @@ module.exports = {
 		path: __dirname + prod_dir + 'assets',
 		publicPath: '/assets/',
 		filename:  '[name].[chunkhash].js',
+	},
+	devServer: {
+	  contentBase: path.join(__dirname, 'dist/web'),
+	  watchContentBase: true,
+	  publicPath: '/assets/',
+	  historyApiFallback: true,
+	  compress: true,
+	  hot: true,
+	  port: 9000,	  	  
 	},
 	module: {
 		loaders: [
@@ -46,6 +56,10 @@ module.exports = {
 		}),
 		new WebpackCleanupPlugin({
 			exclude: ['*.css']
+		}),
+		new LiveReloadPlugin({
+			port: 35729,
+			appendScriptTag: true,
 		}),
 		/*new webpack.DefinePlugin({
 			'process.env':{
